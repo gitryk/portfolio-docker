@@ -12,8 +12,22 @@ Ubuntu 이미지 사용
 
 1. run_me.sh에 실행 권한 준 후 실행
 
-2. portainer 폴더의 docker-compose
+2. portainer 폴더에서 sudo docker-compose up -d
 
-3. web 폴더의 dockerfile 컴파일
+3. web 폴더에서 sudo docker build -t django:v2 .
 
-4. web 폴더 docker-compose
+4. web 폴더 sudo docker-compose up -d
+
+5. web_django_1 컨테이너 접속 후
+
+python manage.py makemigrations
+
+python manage.py migrate
+
+python manage.py createsuperuser
+
+
+
+[TODO]
+
+Static 폴더 S3으로 이관
