@@ -5,3 +5,11 @@
 Amazon EC2의 t2.micro 인스턴스
 
 Ubuntu 이미지 사용
+
+1. run_me.sh에 실행 권한 준 후 실행
+
+2. portainer 폴더의 docker-compose
+
+3. web 폴더의 dockerfile 컴파일
+
+4. web 폴더 docker-compose
