@@ -10,6 +10,15 @@ services:
     volumes:
       - './nginx/conf:/etc/nginx/conf.d'
       - './nginx/www:/var/www/html'
+      
+  django:
+    image: django:v2
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./django/univ:/app
+    command: >
+      sh -c "python manage.py runserver 0.0.0.0:8000"
 
 networks:
   default:
