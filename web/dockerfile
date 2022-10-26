@@ -8,7 +8,7 @@ RUN mkdir /app
 WORKDIR /app
 RUN adduser -D user
 USER user
-RUN pip install django-bootstrap5 mysqlclient gunicorn
+RUN pip install django-bootstrap5 mysqlclient gunicorn django-redis
 USER root
 RUN apk del build-deps
 USER user
