@@ -4,7 +4,7 @@ services:
   nginx:
     image: nginx:mainline-alpine
     container_name: nginx
-    restart: unless-stopped
+    restart: always
     ports:
       - 80:80
     volumes:
@@ -13,12 +13,13 @@ services:
 
   django:
     image: django:v2
+    restart: always
     ports:
       - "8000:8000"
     volumes:
       - ./django/univ:/app
     command: >
-      sh -c "gunicorn --bind 0.0.0.0:8000 config.wsgi:application"
+      sh -c "gunicorn --bind 0.0.0.0:8000 --timeout 90 config.wsgi:application"
 
 networks:
   default:
