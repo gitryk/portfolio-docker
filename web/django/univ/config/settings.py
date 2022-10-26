@@ -38,8 +38,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    # bootstrap
+    # add app
     'django_bootstrap5',
+    "django_redis",
     # my app
     'Main',
     'board',
@@ -83,18 +84,18 @@ WSGI_APPLICATION = 'config.wsgi.application'
 DATABASES = {
     "default": {
         "ENGINE": 'django.db.backends.mysql',
-        "NAME": 'django',
-        "USER": '',
-        "PASSWORD": '',
-        "HOST": '',
+        "NAME": '[DB Database Name]',
+        "USER": '[DB USER Name]',
+        "PASSWORD": '[DB PASSWORD]',
+        "HOST": '[Master DB address]',
         "PORT": '3306',
     },
     'replica': {
         "ENGINE": 'django.db.backends.mysql',
-        "NAME": 'django',
-        "USER": '',
-        "PASSWORD": '',
-        "HOST": '',
+        "NAME": '[DB Database Name]',
+        "USER": '[DB USER Name]',
+        "PASSWORD": '[DB PASSWORD]',
+        "HOST": '[Replica DB address]',
         "PORT": '3306',
     },
 }
@@ -102,6 +103,21 @@ DATABASES = {
 USE_REPLICA_DATABASE = 'TRUE'
 DATABASE_ROUTERS=['config.router.ReplicaRouter']
 
+CACHES = { 
+    "default": { 
+        "BACKEND": "django_redis.cache.RedisCache", 
+        "LOCATION": [ 
+            "redis://[Master RedisCache Server address]:6379", 
+            "redis://[ReadOnly RedisCache Server address]:6379", ], 
+        "OPTIONS": { 
+            "CLIENT_CLASS": "django_redis.client.DefaultClient", 
+            "MASTER_CACHE": "redis://[[Master RedisCache Server address]:6379", 
+        }, 
+    }
+}
+
+SESSION_ENGINE = "django.contrib.sessions.backends.cache"
+SESSION_CACHE_ALIAS = "default"
 
 
 # Password validation
@@ -139,10 +155,6 @@ USE_TZ = False
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
 STATIC_URL = 'static/'
-
-#STATICFILES_DIRS = [
-#    os.path.join(BASE_DIR, 'static')
-#]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
