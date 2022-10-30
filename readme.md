@@ -44,7 +44,7 @@ CACHES = {
         "BACKEND": "django_redis.cache.RedisCache", 
         "LOCATION": [ 
             "redis://[Master RedisCache Server address]:6379", 
-            "redis://[ReadOnly RedisCache Server address]:6379", ], 
+            "redis://[Secondary RedisCache Server address]:6379", ], 
         "OPTIONS": { 
             "CLIENT_CLASS": "django_redis.client.DefaultClient", 
             "MASTER_CACHE": "redis://[[Master RedisCache Server address]:6379", 
