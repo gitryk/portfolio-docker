@@ -1,3 +1,5 @@
+# portfolio-docker #
+
 프로젝트용 테스트 홈페이지를 도커 컨테이너로 1 Instance로 운영하게 하는 테스트 git입니다.
 
 [사용환경]
@@ -23,8 +25,8 @@ Ubuntu 이미지 사용
 
 6. web_django_1 컨테이너 접속 후
 
-python manage.py makemigrations
+  python manage.py makemigrations
 
-python manage.py migrate
+  python manage.py migrate
 
-python manage.py createsuperuser
+  python manage.py createsuperuser
