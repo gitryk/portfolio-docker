@@ -19,7 +19,7 @@ Ubuntu 이미지 사용
 
 3. web 폴더에서 sudo docker build -t django:v2 .
 
-4. web/django/Univ/config/settings.py 편집하여 RDS와 RedisCluster에 대한 설정값 기입하기
+4. web/django/Univ/config/settings.py 편집하여 RDS와 RedisCluster에 대한 설정값 기입하기(해당 부분 수정)
 ```
 DATABASES = {
     "default": {
