@@ -25,6 +25,6 @@ Ubuntu 이미지 사용
 
 6. web_django_1 컨테이너 접속 후
 
-```python manage.py makemigrations
+``` python manage.py makemigrations
   python manage.py migrate
-  python manage.py createsuperuser```
+  python manage.py createsuperuser ```
