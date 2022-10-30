@@ -52,7 +52,6 @@ CACHES = {
     }
 }
 ```
-
 5. web 폴더 sudo docker-compose up -d
 
 6. web_django_1 컨테이너 접속 후
