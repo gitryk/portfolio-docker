@@ -20,6 +20,38 @@ Ubuntu 이미지 사용
 3. web 폴더에서 sudo docker build -t django:v2 .
 
 4. web/django/Univ/config/settings.py 편집하여 RDS와 RedisCluster에 대한 설정값 기입하기
+```
+DATABASES = {
+    "default": {
+        "ENGINE": 'django.db.backends.mysql',
+        "NAME": '[DB Database Name]',
+        "USER": '[DB USER Name]',
+        "PASSWORD": '[DB PASSWORD]',
+        "HOST": '[Master DB address]',
+        "PORT": '3306',
+    },
+    'replica': {
+        "ENGINE": 'django.db.backends.mysql',
+        "NAME": '[DB Database Name]',
+        "USER": '[DB USER Name]',
+        "PASSWORD": '[DB PASSWORD]',
+        "HOST": '[Replica DB address]',
+        "PORT": '3306',
+    },
+}
+CACHES = { 
+    "default": { 
+        "BACKEND": "django_redis.cache.RedisCache", 
+        "LOCATION": [ 
+            "redis://[Master RedisCache Server address]:6379", 
+            "redis://[ReadOnly RedisCache Server address]:6379", ], 
+        "OPTIONS": { 
+            "CLIENT_CLASS": "django_redis.client.DefaultClient", 
+            "MASTER_CACHE": "redis://[[Master RedisCache Server address]:6379", 
+        }, 
+    }
+}
+```
 
 5. web 폴더 sudo docker-compose up -d
 
