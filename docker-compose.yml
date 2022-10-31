@@ -17,7 +17,7 @@ services:
     ports:
       - "8000:8000"
     volumes:
-      - ./django/univ:/app
+      - ./djangoapp:/app
     command: >
       sh -c "gunicorn --bind 0.0.0.0:8000 --timeout 90 config.wsgi:application"
 
