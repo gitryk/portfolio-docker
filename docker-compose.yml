@@ -13,6 +13,7 @@ services:
 
   django:
     image: django:v2
+    container_name: django
     restart: always
     ports:
       - "8000:8000"
