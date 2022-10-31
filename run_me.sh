@@ -16,5 +16,7 @@ sudo systemctl enable docker
 sudo systemctl start docker
 sudo docker network create web-server
 git clone https://github.com/aws/efs-utils
-./efs-utils/build-deb.sh
-sudo apt install ./efs-utils/build/amazon-efs-utils*deb
+cd efs-utils
+./build-deb.sh
+sudo apt install ./build/amazon-efs-utils*deb
+cd ..
