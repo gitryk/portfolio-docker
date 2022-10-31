@@ -18,5 +18,5 @@ sudo docker network create web-server
 git clone https://github.com/aws/efs-utils
 cd efs-utils
 ./build-deb.sh
-sudo apt install ./build/amazon-efs-utils*deb
+sudo apt install -y ./build/amazon-efs-utils*deb
 cd ..
