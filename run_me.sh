@@ -1,5 +1,5 @@
 sudo apt update && sudo apt upgrade -y
-sudo apt install net-tools vim
+sudo apt-get install -y net-tools vim make binutils
 sudo apt-get install \
     ca-certificates \
     curl \
@@ -15,3 +15,6 @@ sudo apt-get install -y docker-compose
 sudo systemctl enable docker
 sudo systemctl start docker
 sudo docker network create web-server
+git clone https://github.com/aws/efs-utils
+./efs-utils/build-deb.sh
+sudo apt install ./efs-utils/build/amazon-efs-utils*deb
