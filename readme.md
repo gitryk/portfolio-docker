@@ -61,7 +61,7 @@ CACHES = {
 
 5. sudo docker-compose up -d
 
-6. web_django_1 컨테이너 접속 후
+6. django 컨테이너 접속 후
 ``` 
 python manage.py makemigrations
 python manage.py migrate
