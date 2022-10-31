@@ -9,7 +9,7 @@ services:
       - 80:80
     volumes:
       - './nginx/conf:/etc/nginx/conf.d'
-      - './nginx/www:/var/www/html'
+      - './nginx/static:/var/www/html/static'
 
   django:
     image: django:v2
