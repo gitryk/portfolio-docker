@@ -8,6 +8,7 @@ Amazon EC2의 t2.micro 인스턴스
 
 Ubuntu 이미지 사용
 
+git clone https://github.com/tryklab/portfolio-docker/
 
 
 
