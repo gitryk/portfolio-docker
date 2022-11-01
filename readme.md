@@ -20,7 +20,7 @@ git clone https://github.com/tryklab/portfolio-docker.git
 
 3. sudo chown -R ubuntu:ubuntu django # 권한 변경
 
-3. /djangoapp/config/settings.py 편집하여 RDS와 RedisCluster에 대한 설정값 기입하기(해당 부분 수정)
+4. /djangoapp/config/settings.py 편집하여 RDS와 RedisCluster에 대한 설정값 기입하기(해당 부분 수정)
 ```
 DATABASES = {
     "default": {
@@ -53,21 +53,23 @@ CACHES = {
     }
 }
 ```
-4. djangoapp 폴더에서 마운팅된 django 폴더로 내용 복사 # cp -R * ../django
+5. djangoapp 폴더에서 마운팅된 django 폴더로 내용 복사 # cp -R * ../django
 
-5. portainer 폴더에서 sudo docker-compose up -d # 필요없을경우 생략
+6. Plz_move_me_s3bucket 내용물 s3 버킷으로 업로드
 
-6. sudo docker build -t django:v2 . # 장고 서비스용 컨테이너 빌드
+7. portainer 폴더에서 sudo docker-compose up -d # 필요없을경우 생략
 
-5. sudo docker-compose up -d
+8. sudo docker build -t django:v2 . # 장고 서비스용 컨테이너 빌드
 
-6. django 컨테이너 접속 후
+9. sudo docker-compose up -d
+
+10. django 컨테이너 접속 후
 ``` 
 python manage.py makemigrations
 python manage.py migrate
 python manage.py createsuperuser
 ```
-7. /etc/fstab 파일 수정
+11. /etc/fstab 파일 수정
 ```
 [AmazonEFS FS Address]:/  [django폴더 절대경로]     efs    _netdev,tls       0   0
 ```
