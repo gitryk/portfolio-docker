@@ -53,6 +53,14 @@ CACHES = {
     }
 }
 ```
+5. nginx/conf/nginx.conf 의 s3버킷 주소값을 수정한다.
+```
+    location ~^/static/(.+)$ {
+        resolver [VPC CIDR, last .2]; # VPC CIDR값에서 끝자리가 2인것으로 기입한다. ex) CIDR = 10.0.0.0/16 -> 10.0.0.2
+        proxy_pass https://[bucket_address]/$1;
+    }
+```
+
 5. djangoapp 폴더에서 마운팅된 django 폴더로 내용 복사 # cp -R * ../django
 
 6. Plz_move_me_s3bucket 내용물 s3 버킷으로 업로드
