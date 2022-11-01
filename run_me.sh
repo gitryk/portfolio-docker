@@ -1,3 +1,5 @@
+mkdir -p portainer/data
+mkdir django
 sudo apt update && sudo apt upgrade -y
 sudo apt-get install -y net-tools vim make binutils
 sudo apt-get install ca-certificates curl gnupg lsb-release
