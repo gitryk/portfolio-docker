@@ -22,36 +22,36 @@ git clone https://github.com/tryklab/portfolio-docker.git
 
 4. /djangoapp/config/settings.py 편집하여 RDS와 RedisCluster에 대한 설정값 기입하기(해당 부분 수정)
 ```
-DATABASES = {
-    "default": {
-        "ENGINE": 'django.db.backends.mysql',
-        "NAME": '[DB Database Name]',
-        "USER": '[DB USER Name]',
-        "PASSWORD": '[DB PASSWORD]',
-        "HOST": '[Master DB address]',
-        "PORT": '3306',
-    },
-    'replica': {
-        "ENGINE": 'django.db.backends.mysql',
-        "NAME": '[DB Database Name]',
-        "USER": '[DB USER Name]',
-        "PASSWORD": '[DB PASSWORD]',
-        "HOST": '[Replica DB address]',
-        "PORT": '3306',
-    },
-}
-CACHES = { 
-    "default": { 
-        "BACKEND": "django_redis.cache.RedisCache", 
-        "LOCATION": [ 
-            "redis://[Master RedisCache Server address]:6379", 
-            "redis://[Secondary RedisCache Server address]:6379", ], 
-        "OPTIONS": { 
-            "CLIENT_CLASS": "django_redis.client.DefaultClient", 
-            "MASTER_CACHE": "redis://[[Master RedisCache Server address]:6379", 
-        }, 
+    DATABASES = {
+        "default": {
+            "ENGINE": 'django.db.backends.mysql',
+            "NAME": '[DB Database Name]',
+            "USER": '[DB USER Name]',
+            "PASSWORD": '[DB PASSWORD]',
+            "HOST": '[Master DB address]',
+            "PORT": '3306',
+        },
+        'replica': {
+            "ENGINE": 'django.db.backends.mysql',
+            "NAME": '[DB Database Name]',
+            "USER": '[DB USER Name]',
+            "PASSWORD": '[DB PASSWORD]',
+            "HOST": '[Replica DB address]',
+            "PORT": '3306',
+        },
     }
-}
+    CACHES = { 
+        "default": { 
+            "BACKEND": "django_redis.cache.RedisCache", 
+            "LOCATION": [ 
+                "redis://[Master RedisCache Server address]:6379", 
+                "redis://[Secondary RedisCache Server address]:6379", ], 
+            "OPTIONS": { 
+                "CLIENT_CLASS": "django_redis.client.DefaultClient", 
+                "MASTER_CACHE": "redis://[[Master RedisCache Server address]:6379", 
+            }, 
+        }
+    }  
 ```
 5. nginx/conf/nginx.conf 의 s3버킷 주소값을 수정한다.
 ```
@@ -73,11 +73,11 @@ CACHES = {
 
 10. django 컨테이너 접속 후
 ``` 
-python manage.py makemigrations
-python manage.py migrate
-python manage.py createsuperuser
+    python manage.py makemigrations
+    python manage.py migrate
+    python manage.py createsuperuser
 ```
 11. /etc/fstab 파일 수정
 ```
-[AmazonEFS FS Address]:/  [django폴더 절대경로]     efs    _netdev,tls       0   0
+    [AmazonEFS FS Address]:/  [django폴더 절대경로]     efs    _netdev,tls       0   0
 ```
